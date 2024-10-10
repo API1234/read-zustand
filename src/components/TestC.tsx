@@ -15,3 +15,5 @@ export const TestC: React.FC = () => {
     <button onClick={() => updateUserInfo({ name: 'Pishiheng', age: 28 })}>Update User Info</button>
   </div>;
 }
+
+export default React.memo(TestC)

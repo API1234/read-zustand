@@ -15,3 +15,5 @@ export const TestA: React.FC = () => {
     <div>lastName: {lastName}</div>
   </div>;
 }
+
+export default React.memo(TestA)

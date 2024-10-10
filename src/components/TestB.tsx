@@ -16,3 +16,5 @@ export const TestB: React.FC = () => {
     <div onClick={() => updateLastName('TestB' + Math.random())}> updateLastName</div >
   </div>;
 }
+
+export default React.memo(TestB)
