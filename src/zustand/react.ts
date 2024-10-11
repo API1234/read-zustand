@@ -30,6 +30,7 @@ export function useStore<TState, StateSlice>(
 ) {
   // console.log("api", api);
   // console.log("selector", selector);
+  // console.log("selector(api.getState())", selector(api.getState()));
   const slice = React.useSyncExternalStore(
     api.subscribe,
     () => selector(api.getState()),

@@ -1,4 +1,6 @@
 import { create } from "../zustand/react";
+// import { create } from "zustand-v4";
+// import { create } from "zustand";
 
 type State = {
   firstName: string;
@@ -29,9 +31,8 @@ export const usePersonStore = create<State & Action>()((set) => {
     updateFirstName: (firstName) => set(() => ({ firstName: firstName })),
     updateLastName: (lastName) =>
       set((state) => {
-        console.log("updating last name", state);
         return {
-          lastName: lastName,
+          lastName: lastName || state.lastName,
         };
       }),
     updateUserInfo: (userInfo) => {

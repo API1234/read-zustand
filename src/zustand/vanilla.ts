@@ -55,7 +55,7 @@ type CreateStoreImpl = <
 ) => Mutate<StoreApi<T>, Mos>;
 
 const createStoreImpl: CreateStoreImpl = (createState) => {
-  console.log("createStoreImpl", createState);
+  // console.log("createStoreImpl", createState);
   type TState = ReturnType<typeof createState>;
   type Listener = () => void;
   let state: TState;
@@ -63,7 +63,7 @@ const createStoreImpl: CreateStoreImpl = (createState) => {
 
   const setState: StoreApi<TState>["setState"] = (partial, replace) => {
     console.log("setState - args - partial", partial);
-    console.log("setState - args - replace", replace);
+    // console.log("setState - args - replace", replace);
     // TODO: Remove type assertion once https://github.com/microsoft/TypeScript/issues/37663 is resolved
     // https://github.com/microsoft/TypeScript/issues/37663#issuecomment-759728342
     const nextState =
@@ -76,6 +76,7 @@ const createStoreImpl: CreateStoreImpl = (createState) => {
         replace ?? (typeof nextState !== "object" || nextState === null)
           ? (nextState as TState)
           : Object.assign({}, state, nextState);
+      console.log("setState - listeners", listeners);
       listeners.forEach((listener) => listener());
     }
   };
